@@ -9,7 +9,8 @@
   },
   "binary": {
     "module_name": "serialport",
-    "module_path": "build/{configuration}/",
+    "module_path": "./build/{configuration}/{node_abi}-{platform}-{arch}/",
+    "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
     "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/4.0.6"
   },
   "main": "./lib/serialport",
