@@ -312,6 +312,7 @@ void EIO_AfterWrite(uv_work_t* req) {
   } else {
     argv[0] = Nan::Null();
   }
+  data->callback.Call(1, argv);
 
   if (data->offset < data->bufferLength && !data->errorString[0]) {
     // We're not done with this baton, so throw it right back onto the queue.
@@ -335,8 +336,6 @@ void EIO_AfterWrite(uv_work_t* req) {
 
   // remove this one from the list
   queuedWrite->remove();
-
-  data->callback.Call(1, argv);
 
   // If there are any left, start a new thread to write the next one.
   if (!write_queue.empty()) {
